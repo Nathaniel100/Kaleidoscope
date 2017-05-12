@@ -12,4 +12,6 @@ add_executable(Kaleidoscope ${SOURCE_FILES})
 
 add_subdirectory(ch02)
 
+add_subdirectory(ch03)
+
 
