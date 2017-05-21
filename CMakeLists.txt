@@ -3,12 +3,17 @@ project(Kaleidoscope)
 
 set(CMAKE_CXX_STANDARD 11)
 
-SET(LLVM_HOME /Users/wufan/llvm)
+find_package(LLVM REQUIRED CONFIG)
 
-include_directories(${LLVM_HOME}/include)
+include_directories(${LLVM_INCLUDE_DIRS})
+add_definitions(${LLVM_DEFINITIONS})
 
-set(SOURCE_FILES main.cpp make_unique.h)
-add_executable(Kaleidoscope ${SOURCE_FILES})
+# Find the libraries that correspond to the LLVM components
+# that we wish to use
+llvm_map_components_to_libnames(llvm_libs support core irreader)
+
+#set(SOURCE_FILES main.cpp make_unique.h)
+#add_executable(Kaleidoscope ${SOURCE_FILES})
 
 add_subdirectory(ch02)
 
